@@ -1,7 +1,7 @@
 # hello-world
 Miscellaneous R Scripts and Utilities
 
-This repository contains a mismash of peripheral syntax files I have generated throughout my work at QIMR B (2020). 
+This repository contains a mismash of peripheral syntax files I have generated throughout my work at QIMR B (2020) and personal time. 
 A brief description of each file is listed here:
 - Setup.R: Clears session, Checks and Calls in my typical toolkit of Packages, Creates several useful functions  
 - Recode_Var.R: A function I created to speed up the data cleaning/recoding process. The function can take an indefinite number of arguments and works on both vectors and dataframes.
