@@ -1,4 +1,4 @@
-# hello-world
+# ReadMe
 Miscellaneous R Scripts and Utilities
 
 This repository contains a mismash of peripheral syntax files I have generated throughout my work at QIMR B (2020) and personal time. Syntax Files and ReadMe still to be updated as of 23/11/2020. 
