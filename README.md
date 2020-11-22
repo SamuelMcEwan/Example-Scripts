@@ -1,8 +1,8 @@
 # hello-world
 Miscellaneous R Scripts and Utilities
 
-This repository contains a mismash of peripheral syntax files I have generated throughout my work at QIMR B (2020) and personal time. 
-A brief description of each file is listed here:
+This repository contains a mismash of peripheral syntax files I have generated throughout my work at QIMR B (2020) and personal time. Syntax Files and ReadMe still to be updated as of 23/11/2020. 
+A brief description of each file is listed here, although note that not all files are currently present in this repository:
 - Setup.R: Clears session, Checks and Calls in my typical toolkit of Packages, Creates several useful functions  
 - Recode_Var.R: A function I created to speed up the data cleaning/recoding process. The function can take an indefinite number of arguments and works on both vectors and dataframes.
 - Fancy_Plots.R: Displays variables over time at the individual level, coloured by cohort. Summaries also provided for Individual and Aggregate level regression parameters. 
