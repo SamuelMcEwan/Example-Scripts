@@ -1,5 +1,5 @@
 library(stringr)
-rm(list = ls())
+rm(list = ls()) 
 
 ##### String Processing/Manipulation #####
 text <- c("nose", "letter38", "window9", "apple0")
@@ -8,7 +8,7 @@ grep("[0-9]", text, value = TRUE)  # report elements which include numbers
 grep("[0-9]", text, value = TRUE) %>% gsub("[0-9]", "", .) # report the non-numeric characters for elements which include numbers
 
 # Gsub Examples 
-text <- c("X_ABC_extract1_DF", 
+text <- c("X_ABC_extract1_DF",
           "A_NJU_extract2_PP",
           "J_H1H",
           "II_00_extract4_PP")
