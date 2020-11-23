@@ -6,7 +6,11 @@
 # This lead to some interesting hobby projects such as building webscrapers, creating novel playable games, and even creating 'music' within R. 
 # This script was a fun way of creating a tutorial/guide to myself on the Sys.sleep() function which can be used for other more useful purposes such as animating plots and 
 # reducing use of bandwidth when webscraping.
-# Please note this script was coded whilst I had limited R experience and some computer systems may find difficulty replicating a fluid rhythm between subsequent sample sounds
+# Please note this script was coded whilst I had limited R experience and some computer systems may find difficulty replicating a fluid rhythm
+# between subsequent sample sounds. 
+# Despite it's novelty and lack of impressiveness, I have included this script in this repository to demonstrate my genuine curiosity with regards to coding
+# I am continuing to improve through interest of how I can extend my skills to new areas. 
+# For example this is what lead me to learn C++ to obtain faster processing speeds that would help learn facial/object detection from scratch. 
 
 install.packages("beepr")
 library(beepr)
