@@ -1,5 +1,5 @@
 #############################################
-# Description 
+# Description
 ##################
 
 # In 2018 when I only knew R, SPSS and SAS, I was interested in how to achieve other interesting functionalities outside of data-processing/analysis.
