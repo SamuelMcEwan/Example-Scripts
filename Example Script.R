@@ -1,4 +1,34 @@
 ################################################################################
+# Description
+############################################
+# [PURPOSE]
+# Preliminary weekly visualizations of Longitudinal Disease and Weather Data from 2000-2019.
+# This script is extended for time series analysis using B-splines and Generalized Additive Models (GAMs).
+# For Github viewers, this script is not reproducable due to confidentiality and dataset claims.
+# I have uploaded this script just to demonstrate an example workflow of the data processing/understanding stage
+#
+# [AUTHOR]
+# Samuel McEwan, QIMR Berghofer
+#
+# [DATE]
+# 30.10.2020
+#
+# [DEPENDENCIES]
+# Mostly our Typical Toolkit of packages. But c("gam", "tseries", "ggfortify", "e1071") may need to be installed.
+# Running line 35 will report what packages need to be installed if any
+#
+# [INPUT]
+# diseasedata_07_20_eb.xlsx
+# Weather_EHF.xlsx
+
+# [OUTPUT]
+# Weekly_Plots/Weekly_[var].tiff"
+
+# [OTHER]
+# Set working directory to [confidential folder name] before running the script.
+
+
+################################################################################
 # Setup the Session
 ############################################
 packages <- c("openxlsx", "magrittr", "dplyr", "lubridate", "stringr", "splines", "gam", "dlnm", "tseries", "ggfortify", "e1071", "epiDisplay", "lattice", "lmtest", "moments", "ggplot") # "haven", "tidyverse" 
@@ -136,7 +166,7 @@ sapply(c("Weekly_Precipitation", "MaxTemp", "MinTemp", "Mean_Humidity0900", "Mea
 # Define a function that saves all raw longitudinal plots as .tiff files in a folder named "raw_plots" located in the current working directory
 tiff_plot_week <- function(var){
   oldpar <- par(no.readonly=TRUE)
-  tiff(filename = paste0("raw_plots/Figure_", var, ".tiff"), height = 12, width = 20, units = 'cm', compression = "lzw", res = 300)
+  tiff(filename = paste0("Weekly_Plots/Weekly", var, ".tiff"), height = 12, width = 20, units = 'cm', compression = "lzw", res = 300)
   plot(merged$start_week, merged[, var],
        xlab="", ylab = var, t="b",  lty=1, xaxt="n")
   title(xlab = "Date", line = 4)
