@@ -1,5 +1,5 @@
 ##########################################################
-# Rotation + Translation of 3D model for 2D projection 
+# Rotation + Translation of 3D model for 2D projection
 ##############
 
 # Setup the session
@@ -21,7 +21,7 @@ ty <- atan(y-Position[2])
 tz <- atan(z-Position[3])
 pts <- data.frame(tx,ty,tz)
 
-# Create function which rotate the model in the x, y and z planes. 
+# Create functions which rotate the model in the x, y and z planes. 
 rx <- function(pts, t){
   as.matrix(pts)%*%matrix(c(1,0,0,0,cos(t),sin(t),0,-sin(t),cos(t)), nrow = 3, byrow = TRUE)
 }
