@@ -2,7 +2,7 @@
 # Description
 ##################
 
-# The purpose of this script is to demonstrate the power of integrating C++ code with R scripts through the package RcpP.
+# The purpose of this script is to demonstrate the power of integrating C++ code with R scripts through the package Rcpp.
 # Demonstrated below are cases where C++ functions clearly outperform identically constructed R functions.
 # Fibonacci Sequence: C++ runs 100x quicker
 # Cummalitive Sum using a Loop: C++ runs 20x quicker
