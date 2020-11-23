@@ -1,5 +1,21 @@
+##################################
+# Description
+##################
+
+# The purpose of this script is to demonstrate the power of integrating C++ code with R scripts through the package RcpP.
+# Demonstrated below are cases where C++ functions clearly outperform identically constructed R functions.
+# Fibonacci Sequence: C++ runs 100x quicker
+# Cummalitive Sum using a Loop: C++ runs 20x quicker
+#
+# Note that better optimized functions for calculating the cumulative sum (such as cumsum()) exist within R, however the point here is comparability
+# of how similar logic performs when all other coding aspects are kept the same. 
+
+
+
+##### Setup the Session #####
 library(Rcpp)
 library(rbenchmark)
+rm(list = ls())
 
 ##### Fibonacci Sequence #####
 # Create a function named 'f' in base R which finds the nth term in a Fibonacci Sequence
