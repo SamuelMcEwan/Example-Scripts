@@ -1,3 +1,13 @@
+#############################################
+# Description
+##################
+
+# In 2018 when I only knew R, SPSS and SAS, I was interested in how to achieve other interesting functionalities outside of data-processing/analysis.
+# This lead to some interesting hobby projects such as building webscrapers, creating novel playable games, and even creating 'music' within R. 
+# This script was a fun way of creating a tutorial/guide to myself on the Sys.sleep() function which can be used for other more useful purposes such as animating plots and 
+# reducing use of bandwidth when webscraping.
+# Please note this script was coded whilst I had limited R experience and some computer systems may find difficulty replicating a fluid rhythm between subsequent sample sounds
+
 install.packages("beepr")
 library(beepr)
 # install.packages("devtools")
@@ -11,18 +21,12 @@ bep <- function(x, t){
   testit(t)
 }
 
-
-
-
-
 # Run this line.......
 { 
   
 # Intro:
-  beep(8)
-  testit(5.5)
-  beep(6)
-  testit(1)
+  bep(8, 5.5)
+  beep(6, 1)
 
 # Beginning of Beat - Bars 1 & 2
 for(i in 1:2){
