@@ -1,5 +1,5 @@
 library(stringr)
-rm(list = ls()) 
+rm(list = ls())
 
 ##### String Processing/Manipulation #####
 text <- c("nose", "letter38", "window9", "apple0")
