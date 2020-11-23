@@ -4,8 +4,8 @@
 # [PURPOSE]
 # Preliminary weekly visualizations of Longitudinal Disease and Weather Data from 2000-2019.
 # This script is extended for time series analysis using B-splines and Generalized Additive Models (GAMs).
-# For Github viewers, this script is not reproducable due to confidentiality and dataset claims.
-# I have uploaded this script just to demonstrate an example workflow of the data processing/understanding stage
+# For Github viewers, this script is not reproducable due to confidentiality and dataset claims. Therefore I have also removed the analysis component
+# I have uploaded this script just to demonstrate an example workflow of the data processing stage. 
 #
 # [AUTHOR]
 # Samuel McEwan, QIMR Berghofer
