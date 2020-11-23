@@ -1,3 +1,14 @@
+#############################################
+# Description
+##################
+
+# In 2018 when I only knew R, SPSS and SAS, I was interested in how to achieve user interaction and other interesting functionalities outside of data-processing/analysis.
+# This lead to some interesting hobby projects such as building webscrapers, creating music withini R, and even creating novel, playable games. 
+# This script was a fun way of creating a tutorial/guide to myself on using the readline() and prompt() statements within R.
+# Please note that this script was coded on the fly whilst I had limited R experience. Hotfixes were made but no editing in hindsight/code optimization. 
+# Therefore, although the code is messy, it is a nice way for me to keep track of my progress since 2018
+
+
 ##### Setup #####
 # install.packages(c("rJava", "stringr", "tcltk2", "rpanel", "sm", "rMouse", "KeyboardSimulator", "magrittr", "dplyr", "ggplot2")) # rJava often needs to be re-installed each time it is used
 packages <- c("rJava", "stringr", "tcltk2", "rpanel", "sm", "rMouse", "KeyboardSimulator", "magrittr", "dplyr", "ggplot2")
