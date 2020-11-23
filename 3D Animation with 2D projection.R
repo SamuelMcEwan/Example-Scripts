@@ -1,5 +1,5 @@
 ##########################################################
-# Rotation + Translation of 3D model for 2D projection
+# Rotation + Translation of 3D model for 2D projection 
 ##############
 
 # Setup the session
