@@ -11,5 +11,5 @@ A brief description of each file is listed here, although note that not all file
 - Knoughts_and_Crosses.R: This was a fun way to learn user-interaction from within R
 - WebScraper.R: Collects virtual stock information from the internet every 10 minutes and tabulates the data in an automatically updating excel spreadsheet
 - Silicon_Symphony.R: Music with R, generated from 10 sample sounds syncopated via system pauses of defined length. 
-- How_Low_Can_You_Go.R: Code optimization via seemless integration of R and C++. 
+- The Power of Rcpp.R: Code optimization via seemless integration of R and C++. 
 - Paint.R: This was a fun way to learn how to track mouse movement and mouse clicks from within R. Produces a novelty 3D animation of my name. 
