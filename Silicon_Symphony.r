@@ -4,13 +4,13 @@
 
 # In 2018 when I only knew R, SPSS and SAS, I was interested in how to achieve other interesting functionalities outside of data-processing/analysis.
 # This lead to some interesting hobby projects such as building webscrapers, creating novel playable games, and even creating 'music' within R. 
-# This script was a fun way of creating a tutorial/guide to myself on the Sys.sleep() function which can be used for other more useful purposes such as animating plots and 
+# This script was a fun way of creating a tutorial/guide for the Sys.sleep() function which can be used for other more useful purposes such as animating plots and 
 # reducing use of bandwidth when webscraping.
-# Please note this script was coded whilst I had limited R experience and some computer systems may find difficulty replicating a fluid rhythm
+# Please note this script was coded whilst I had limited R experience and some computer systems with slower computational speeds may find difficulty replicating a fluid rhythm
 # between subsequent sample sounds. 
 # Despite it's novelty and lack of impressiveness, I have included this script in this repository to demonstrate my genuine curiosity with regards to coding
 # I am continuing to improve through interest of how I can extend my skills to new areas. 
-# For example this is what lead me to learn C++ to obtain faster processing speeds that would help learn facial/object detection from scratch. 
+# For example, I was motivated to learn C++ to obtain faster processing speeds that would help learn facial/object detection from scratch. 
 
 install.packages("beepr")
 library(beepr)
