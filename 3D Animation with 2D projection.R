@@ -39,5 +39,4 @@ for(i in 1:64){
   plot(pts[,1], pts[,2], xlim = c(-2,2),ylim = c(-2,2), 
        type = 'l')
   Sys.sleep(0.1)
-  i <- i+1
 }
