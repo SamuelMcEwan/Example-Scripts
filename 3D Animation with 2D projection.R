@@ -14,7 +14,7 @@ z <- rnorm(50)
 # View 2D plot in the x and y dimensions
 plot(x,y, type = 'l')
 
-# Set the camera position
+# Set the camera position (Note that a position not at the origin will result in some translation)
 Position <- c(0,0,-1.5)
 tx <- atan(x-Position[1]) 
 ty <- atan(y-Position[2])
