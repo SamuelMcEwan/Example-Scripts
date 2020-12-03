@@ -1,11 +1,4 @@
 # Travelling Salesman
-testit <- function(x)
-{
-  p1 <- proc.time()
-  Sys.sleep(x)
-  proc.time() - p1 # The cpu usage should be negligible
-}
-
 x <- rnorm(150)
 y <- rnorm(150)
 pts <- cbind(x,y)
@@ -68,7 +61,7 @@ for(i in 1:10000){
     ord <- ord2
     print(td(pts, ord2))
     plot(x[ord], y[ord], type = 'l')
-    testit(0.05)
+    Sys.sleep(0.075)
   }
 }
 td(pts , ord2)
