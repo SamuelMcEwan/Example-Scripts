@@ -332,36 +332,38 @@ rmcorr(participant = StudyCode, measure1 = log(Asex, base = 10), measure2 = log(
 # Figures - Pairwise Correlation Plots
 
 # Notes 
-# - Same data filters are applied as form computation of the repeated measures correlation coefficient
+# - Variables used for pairwise correlation analyses are plotted against each other on the log10 scale
+# - Each pairwise plot is first temporarily saved and then collectively generated via lapply(list(p1,p2,p3,p4), add_trendline)
+# - To save repeated redundant code, add_trendline() is a function that overlays the log10 regression trendline in
+#   addition to improving the formatting of the ggplots.
+# - The same data filters are applied as when computing the respective repeated measures correlation coefficients
 #   ie- >6 gams for plots involving PfMGET/CCp4, and >=18 days for plots involving 18s
-# - Variables are plotted on the log10 scale
 # - Additional plots of Gametocytes vs Parasitaemia Level 10 days earlier may provide greater insight
 
 ######################
 
-# CCp4 vs PfMGET
-ggplot(rmcorr_data %>% filter(CCp4 > 6, PfMGET > 6), aes(x = PfMGET, y = CCp4, group = StudyCode)) + geom_line(size = 2, alpha = 0.1) + geom_point(size = 1.25)+
-  ggtitle("Log10_CCp4 vs Log10_PfMGET") + scale_y_log10() + scale_x_log10() + 
-  theme(plot.title = element_text(hjust = 0.5, size = 14, face = "bold"), axis.title = element_text(size = 11), axis.text = element_text(size = 8))
+add_trendline <- function(p){p + geom_smooth(data = ggplot_build(p)$data[[1]], aes(x=10^x, y=10^y), method = 'lm') +
+    theme(plot.title = element_text(hjust = 0.5, size = 14, face = "bold"), axis.title = element_text(size = 11), axis.text = element_text(size = 8))
+}
 
+# CCp4 vs PfMGET
+p1 = ggplot(rmcorr_data %>% filter(CCp4 > 6, PfMGET > 6), aes(x = PfMGET, y = CCp4)) + geom_point(size = 1.25) + 
+  ggtitle("Log10_CCp4 vs Log10_PfMGET") + scale_y_log10() + scale_x_log10() 
 
 # CCp4 vs Asex
-ggplot(rmcorr_data %>% filter(CCp4 > 6, day >= 18), aes(x = Asex, y = CCp4, group = StudyCode)) + geom_line(size = 2, alpha = 0.1) + geom_point(size = 1.25)+
-  ggtitle("Log10_CCp4 vs Log10_Asex") + scale_y_log10() + scale_x_log10() + 
-  theme(plot.title = element_text(hjust = 0.5, size = 14, face = "bold"), axis.title = element_text(size = 11), axis.text = element_text(size = 8)) 
-
+p2 = ggplot(rmcorr_data %>% filter(CCp4 > 6, day >= 18), aes(x = Asex, y = CCp4)) + geom_point(size = 1.25) + 
+  ggtitle("Log10_CCp4 vs Log10_Asex") + scale_y_log10() + scale_x_log10() 
 
 # PfMGET vs Asex
-ggplot(rmcorr_data %>% filter(PfMGET > 6, day >= 18), aes(x = Asex, y = PfMGET, group = StudyCode)) + geom_line(size = 2, alpha = 0.1) + geom_point(size = 1.25)+
-  ggtitle("Log10_PfMGET vs Log10_Asex") + scale_y_log10() + scale_x_log10() + 
-  theme(plot.title = element_text(hjust = 0.5, size = 14, face = "bold"), axis.title = element_text(size = 11), axis.text = element_text(size = 8)) 
-  
+p3 = ggplot(rmcorr_data %>% filter(PfMGET > 6, day >= 18), aes(x = Asex, y = PfMGET)) + geom_point(size = 1.25) + 
+  ggtitle("Log10_PfMGET vs Log10_Asex") + scale_y_log10() + scale_x_log10() 
 
 # CCp4 + PfMGET vs Asex
-ggplot(rmcorr_data %>% filter(CCp4 + PfMGET > 12, day >= 18), aes(x = Asex, y = CCp4+PfMGET, group = StudyCode)) + geom_line(size = 2, alpha = 0.1) + geom_point(size = 1.25)+
-  ggtitle("Log10(CCp4+PfMGET) vs Log10_Asex") + scale_y_log10() + scale_x_log10() + 
-  theme(plot.title = element_text(hjust = 0.5, size = 14, face = "bold"), axis.title = element_text(size = 11), axis.text = element_text(size = 8)) 
+p4 = ggplot(rmcorr_data %>% filter(CCp4 + PfMGET > 12, day >= 18), aes(x = Asex, y = CCp4+PfMGET)) + geom_point(size = 1.25) + 
+  ggtitle("Log10(CCp4+PfMGET) vs Log10_Asex") + scale_y_log10() + scale_x_log10() 
 
+# Generate Plots
+lapply(list(p1,p2,p3,p4), add_trendline)
 
 
 ######################################################################
