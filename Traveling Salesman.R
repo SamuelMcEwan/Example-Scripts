@@ -49,23 +49,18 @@ distance <- function(order){
   return(total_distance)
 } 
 # Evaluation of the distance function takes 0.2 milliseconds for n = 300 cities. Execution takes 0.6 milliseconds without use of a distance matrix 
-# This is a bottleneck. Roughly 80% of computation time during each iteration in the while() loop is spent computing total distance
+# This is a bottleneck. Roughly 90% of computation time during each iteration in the while() loop is spent computing total distance
 
-# swap 3 randomly picked cities in the ordering
-swap <- function(order) {
-  swaps <- 3
-  indices <- sample(1:length(order), swaps); temp <- rep(0,swaps)
-  for (i in 1:swaps){
-    temp[i] = order[indices[i]]
-  }
-  for (j in 1:(swaps-1)){
-    order[indices[j]] = temp[j+1]
-  }
-  order[indices[swaps]] = temp[1]
-  return(order)
-} # Execution takes 0.008 milliseconds and speed seems mostly independent of n.
+# Create an efficient 2-opt route permutation function. Note compared to other random permutations, 2-opt is incredibly powerful
+swap1 <- function(order){
+  pos1 <- sample(2:(cities-2), 1)
+  pos2 <- sample({1:(cities-1)}[-c(pos1-1, pos1, pos1+1)], 1)
+  l <- min(pos1, pos2)
+  u <- max(pos1, pos2)
+  return(order[c(1:l, u:(l+1), (u+1):cities)])
+} # Execution takes 0.016 milliseconds and speed seems mostly independent of n.
 
-# Create the Simulated Annealing acceptance function, producing the probability of accepting a 'worse' intermediary solution 
+# Create the Simulated Annealing acceptance function which returns the the probability of accepting a 'worse' intermediary solution 
 accptFun <- function(delE, t) {
   return(1/(1+exp(delE/t)))
 }
@@ -74,37 +69,37 @@ accptFun <- function(delE, t) {
 t = 1e4; order <- 1:cities; E <- distance(order = order); iter <- 1; Error <- c(E)
 
 {
-startTime <- proc.time()["elapsed"]; currentTime <- 0
-wait <- 15
-par(mfrow = c(1,2))
-while(currentTime < wait) {
-  newOrder <- swap(order = order)
-  newE <- distance(order = newOrder)
-  
-  rand <- runif(1, min = 0, max = 1)
-  acpt <- accptFun(newE - E, t)
-
-  if(rand <= acpt) {
-    delE <- newE - E
+  plot_at_time <- seq(0.1, 15, by = 0.1)
+  display_plot <- rep(TRUE, length(plot_at_time))  
+  t = 1e4; order <- 1:ncities; E <- distance(order = order); iter <- 1; Error <- c(E); currentTime <- 0
+  startTime <- proc.time()["elapsed"]
+  wait <- 15
+  par(mfrow = c(1,2))
+  while(currentTime < wait) {
+      newOrder <- swap1(order = order)
+      newE <- distance(order = newOrder)
+      rand <- runif(1, min = 0, max = 1)
+      acpt <- accptFun(newE - E, t)
+      currentTime <- proc.time()["elapsed"] - startTime
+      if(rand <= acpt | newE < E) {
+        delE <- newE - E
+        E <- newE
+        order <- newOrder
+        t <- t * 0.9
+        iter <- iter + 1
+        Error[iter] = E
+        if(display_plot[which.min(abs(currentTime - plot_at_time))]){
+          plot(df[order,], type = 'l')
+          plot(1:iter, Error, xlab = "Iterations", ylab = "Total Distance", type = "l")
+          cat("Iteration: ", iter, ", Time: ", currentTime, "Temperature: ", t, "\n")
+          cat("Total Distance: ", E, ", New Total Distance: ", newE, "\n")
+          cat("Del E: ", delE, "\n")
+          cat("\n\n")
+          display_plot[which.min(abs(currentTime["elapsed"] - plot_at_time))] <- FALSE
+        }
+      }
+  }  
     
-    cat("Iteration: ", iter, ", Time: ", currentTime["elapsed"], "\n")
-    cat("Temperature: ", t, ", Prob Accept: ", acpt, "\n")
-    cat("Total Distance: ", ", New Total Distance: ", newE, "\n")
-    cat("Del E: ", delE, "\n")
-    cat("\n\n")
-    
-    E <- newE
-    order <- newOrder
-    t <- t * 0.9
-    iter <- iter + 1
-    Error[iter] = E
-    plot(x,y); lines(df[order,])
-    plot(1:iter, Error, xlab = "Iterations", ylab = "Total Distance", type = "l")
-    currentTime <- proc.time() - startTime 
-    Sys.sleep(0.075)
-    
-  }
-}
 }
 
 # plot(x,y); lines(df[order,])
