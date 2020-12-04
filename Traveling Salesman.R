@@ -74,16 +74,16 @@ accptFun <- function(delE, t) {
 t = 1e4; order <- 1:cities; E <- distance(order = order); iter <- 1; Error <- c(E)
 
 {
-startTime <- currentTime <- proc.time()["elapsed"]
+startTime <- proc.time()["elapsed"]; currentTime <- 0
 wait <- 15
 par(mfrow = c(1,2))
-while(proc.time() - startTime < wait) {
+while(currentTime < wait) {
   newOrder <- swap(order = order)
   newE <- distance(order = newOrder)
   
   rand <- runif(1, min = 0, max = 1)
   acpt <- accptFun(newE - E, t)
-  
+
   if(rand <= acpt) {
     delE <- newE - E
     
@@ -100,7 +100,9 @@ while(proc.time() - startTime < wait) {
     Error[iter] = E
     plot(x,y); lines(df[order,])
     plot(1:iter, Error, xlab = "Iterations", ylab = "Total Distance", type = "l")
+    currentTime <- proc.time() - startTime 
     Sys.sleep(0.075)
+    
   }
 }
 }
