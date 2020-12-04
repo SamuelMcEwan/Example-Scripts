@@ -1,11 +1,11 @@
-########################################
+###########################################
 # Description
 ################
 
 # The Travelling Salesman Problem (TSP) is one of the most intesively studied problems in optimizations research. 
 
 # The problem is formulated as follows:
-# Given a list of cities and the distances between each pair of cities, what is the shortest possible 
+# Given a list of cities and the pairiwse distances between each city, what is the shortest possible 
 # route that connects each city exactly once
 
 # Despite it's easy problem formulation, the TSP is NP-hard and computationally expensive. 
@@ -13,36 +13,38 @@
 
 # Here I list several methods which attempt to 'solve' the TSP
 # 1) Brutue Forcing - Consider all n! possible routes and choose the one which minimizes the total travelled distance.
-# 2) 2 opt - Beginning with an initial route, randomly
 # 2) Nearest Neighbour - Beginning with an initial node, iteratively pick the next subsequent node as the node which is closest to the previous node 
+# 3) 2 opt - Beginning with an initial route, randomly permute two nodes and accept the new route only if the total distance is minimzed 
+# 4) Simmulated Anealling - An extension on local descent algorithms with the ability to escape local minima. 
+#                           Local minima are escaped through the use of a decaying temperature + acceptance function in which 'worse' solutions are accepted
+#                           as intemediary routes with probability roughly proportional to the change in solution between iterations and 
+#                           roughly inversely proportional with the number of iterations  
 
+# Method 1 is compuationally prohibitive for any non-small n and therefore is not considered in this syntax. 
+# Method 2 by far offers the quickest solution which reasonably approximates the global solution. However is known to produce local minima.
+# Method 3 is a 'greedy' local descent algorithm which iteratively improves the route and will in the long term produce a more optimal solution than method 2
+# Method 4 is the slowest, however with the addition of an acceptance function (similar to the Metropolis Hastings Algorithm), has the unique ability to escape local minima.
+# Here I consider using method 2 to build an iniial framework for simulated annealing. 
 
-cities <- 30 
-x <- sample(1000,cities); y <- sample(1000, cities); df <- data.frame(x,y); plot(x,y, type = 'b')
-fdistance <- function (x,y){  sqrt(
-  (df[x,1] - df[y,1])^2 + (df[x,2] - df[y,2])^2)
-}
-mtx <- matrix(0, nrow=cities, ncol=cities)
-for (i in 1:cities){
-  for (j in 1:cities){
-    mtx[i,j] <- fdistance(i,j)
-  }
-}
-(dist <- mtx)
+# Note that in this syntax I have sacrificed computation speed in order to produce live plot animations of how the route and cost function are changing over time. 
+#################################################
+
+cities <- 300 
+df <- data.frame(x = sample(1000, cities), y = sample(1000, cities))
+plot(df, type = 'b')
+
+dist_mtx <- as.matrix(dist(df))
 
 # compute the total distance given the ordering of the cities in the path
-distance <- function(order) {
+distance <- function(order){
   total_distance <- 0
-  
   for (i in 1:(length(order)-1)) {
     total_distance <- total_distance + dist[order[i], order[i+1]]
   }
-  
-  total_distance <- total_distance + dist[order[length(order)], order[1]]
-  return (total_distance)
-}
+  return(total_distance)
+} # Execution takes 0.2 milliseconds for n = 300 cities. Execution took 0.6 milliseconds without use of a distance matrix 
 
-# swap two randomly picked cities in the ordering
+# swap 3 randomly picked cities in the ordering
 swap <- function(order) {
   swaps <- 3
   indices <- sample(1:length(order), swaps); temp <- rep(0,swaps)
@@ -54,17 +56,18 @@ swap <- function(order) {
   }
   order[indices[swaps]] = temp[1]
   return(order)
-}
+} # Execution takes 0.008 milliseconds and speed seems mostly independent of n.
+
 # returns the probability with which a solution should be accepted
 accptFun <- function(delE, t) {
   return(1/(1+exp(delE/t)))
 }
 
 # Initialization
-t = 1e4; ncities <- cities; order <- sample(x = 1:ncities); E <- distance(order = order); iter <- 1; Error <- c(E)
+t = 1e4; order <- 1:cities; E <- distance(order = order); iter <- 1; Error <- c(E)
 
 {
-startTime <- proc.time()
+startTime <- currentTime <- proc.time()["elapsed"]
 wait <- 15
 par(mfrow = c(1,2))
 while(proc.time() - startTime < wait) {
