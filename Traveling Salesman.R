@@ -14,20 +14,22 @@
 # Here I list several methods which attempt to 'solve' the TSP
 # 1) Brutue Forcing - Consider all n! possible routes and choose the one which minimizes the total travelled distance.
 # 2) Nearest Neighbour - Beginning with an initial node, iteratively pick the next subsequent node as the node which is closest to the previous node 
-# 3) 2 opt - Beginning with an initial route, randomly permute two nodes and accept the new route only if the total distance is minimzed 
-# 4) Simmulated Anealling - An extension on local descent algorithms with the ability to escape local minima. 
+# 3) 2 opt - Beginning with an initial route, randomly permute two nodes and accept the new route only if the total distance is minimized 
+# 4) Simmulated Anealling - An extension to local descent algorithms with the ability to escape local minima. 
 #                           Local minima are escaped through the use of a decaying temperature + acceptance function in which 'worse' solutions are accepted
-#                           as intemediary routes with probability roughly proportional to the change in solution between iterations and 
-#                           roughly inversely proportional with the number of iterations  
+#                           as intermediary routes with probability roughly proportional to the change in cost function between iterations and 
+#                           roughly inversely proportional to the number of iterations  
 
 # Method 1 is compuationally prohibitive for any non-small n and therefore is not considered in this syntax. 
 # Method 2 by far offers the quickest solution which reasonably approximates the global solution. However is known to produce local minima.
 # Method 3 is a 'greedy' local descent algorithm which iteratively improves the route and will in the long term produce a more optimal solution than method 2
 # Method 4 is the slowest, however with the addition of an acceptance function (similar to the Metropolis Hastings Algorithm), has the unique ability to escape local minima.
-# Here I consider using method 2 to build an iniial framework for simulated annealing. 
-
+# Typically method 2 is used to build an iniial framework/route that feeds into more advanced methods. 
+# However here I have coded simulated annealing without Nearest Neighbour boosting due to the desire of producing animations that resolve a reasonable solution
+# from an initialy poor route choice
+ 
 # Note that in this syntax I have sacrificed some computation speed in order to produce live plot animations of how the route and cost function are changing over time.
-# However by updating the plot only once every 0.1 seconds if an improved solution is available, the cost of plotting is greatly reduced
+# However by updating the plot only once every 0.1 seconds if an improved solution is available, I have greatly reduced the computation burden.
 # After running a few microbenchmarks, the bottleneck is in computation of the total distance
 #################################################
 
@@ -35,6 +37,7 @@ cities <- 300
 df <- data.frame(x = sample(1000, cities), y = sample(1000, cities))
 plot(df, type = 'b')
 
+# Create a reference distance matrix to efficiently calculate the total distance of new candidate routes
 dist_mtx <- as.matrix(dist(df))
 
 # Compute the total distance given the ordering of the cities in the path
@@ -62,7 +65,7 @@ swap <- function(order) {
   return(order)
 } # Execution takes 0.008 milliseconds and speed seems mostly independent of n.
 
-# returns the probability with which a solution should be accepted
+# Create the Simulated Annealing acceptance function, producing the probability of accepting a 'worse' intermediary solution 
 accptFun <- function(delE, t) {
   return(1/(1+exp(delE/t)))
 }
@@ -84,9 +87,10 @@ while(proc.time() - startTime < wait) {
   if(rand <= acpt) {
     delE <- newE - E
     
-    cat("Iteration: ", iter, ", Time: ", proc.time() - startTime, "Temperature: ", t, "\n")
-    cat("Order: ", order, ", New Order: ", newOrder, "\n")
-    cat("Total Distance: ", E, "Del E: ", delE, ", New Total Distance: ", newE, "\n")
+    cat("Iteration: ", iter, ", Time: ", currentTime["elapsed"], "\n")
+    cat("Temperature: ", t, ", Prob Accept: ", acpt, "\n")
+    cat("Total Distance: ", ", New Total Distance: ", newE, "\n")
+    cat("Del E: ", delE, "\n")
     cat("\n\n")
     
     E <- newE
