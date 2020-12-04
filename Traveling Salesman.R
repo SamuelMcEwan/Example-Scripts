@@ -2,7 +2,7 @@
 # Description
 ################
 
-# The Travelling Salesman Problem (TSP) is one of the most intesively studied problems in optimizations research. 
+# The Travelling Salesman Problem (TSP) is one of the most intensively studied problems in optimizations research. 
 
 # The problem is formulated as follows:
 # Given a list of cities and the pairiwse distances between each city, what is the shortest possible 
