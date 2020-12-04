@@ -26,7 +26,9 @@
 # Method 4 is the slowest, however with the addition of an acceptance function (similar to the Metropolis Hastings Algorithm), has the unique ability to escape local minima.
 # Here I consider using method 2 to build an iniial framework for simulated annealing. 
 
-# Note that in this syntax I have sacrificed computation speed in order to produce live plot animations of how the route and cost function are changing over time. 
+# Note that in this syntax I have sacrificed some computation speed in order to produce live plot animations of how the route and cost function are changing over time.
+# However by updating the plot only once every 0.1 seconds if an improved solution is available, the cost of plotting is greatly reduced
+# After running a few microbenchmarks, the bottleneck is in computation of the total distance
 #################################################
 
 cities <- 300 
