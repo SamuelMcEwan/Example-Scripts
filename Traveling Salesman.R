@@ -38,13 +38,15 @@ plot(df, type = 'b')
 dist_mtx <- as.matrix(dist(df))
 
 # compute the total distance given the ordering of the cities in the path
+# Execution takes 0.2 milliseconds for n = 300 cities. Execution took 0.6 milliseconds without use of a distance matrix 
+# 80% of computation time during each iteration is spent computing total distance. This is a bottleneck
 distance <- function(order){
   total_distance <- 0
   for (i in 1:(length(order)-1)) {
     total_distance <- total_distance + dist[order[i], order[i+1]]
   }
   return(total_distance)
-} # Execution takes 0.2 milliseconds for n = 300 cities. Execution took 0.6 milliseconds without use of a distance matrix 
+} 
 
 # swap 3 randomly picked cities in the ordering
 swap <- function(order) {
