@@ -70,6 +70,7 @@ swap <- function(order, dist){
 # Then I am comparing the computation speeds of the functions distance() and swap() which compute total distance. 
 # Note that the swap() function has the added functionality of performing a 2-opt permutation so we would expect the swap() function to
 # to be much slower. However the swap() function is 10x faster despite the burden of additional functionalities!!!
+library(microbenchmark)
 order <- 1:cities; current_distance = distance(order)
 microbenchmark(distance(order),                # 290 microseconds
                swap(order, current_distance))  #  22 microseconds!!
