@@ -72,7 +72,7 @@ swap <- function(order, dist){
 # to be much slower. However the swap() function is 10x faster despite the burden of additional functionalities!!!
 library(microbenchmark)
 order <- 1:cities; current_distance = distance(order)
-microbenchmark(distance(order),                # 290 microseconds
+microbenchmark(distance(order),                # 290 microseconds     Note, execute this line 3 times, and ignore the results from the 1st execution.
                swap(order, current_distance))  #  22 microseconds!!
 
 
@@ -126,14 +126,14 @@ Run_Travelling_Salesman <- function(starting_order, run_time, initial_temperatur
   
 }
 
-# Run the Travelling Salesman Problem with an abysmal randomly generated starting route, and using a 2-opt search without simulated annealling.
+# Run the Travelling Salesman Problem for 50 seconds with an abysmal randomly generated starting route, and using a 2-opt search without simulated annealling.
 # Simulated annealing is 'disabled' here via setting the temperature and decay parameters to 0. Therefore the search is entirely greedy. 
 # ie - new routes are only accepted if they immediately improve the cost function (total distance of the route)
 
 Run_Travelling_Salesman(sample(cities), run_time = 50, initial_temperature = 0, decay = 0)
 
 
-# Run the Travelling Salesman Problem with a 2-opt search, this time boosted by a Nearest Neighbour starting route. Again, no simulated annealing
+# Run the Travelling Salesman Problem for 50 seconds with a 2-opt search, this time boosted by a Nearest Neighbour starting route. Again, no simulated annealing
 # First of all the function Nearest_Neighbour() is created which will begin with an initial node, and iteratively pick the next subsequent node 
 # as the node which is closest to the previous node. The output route using the Nearest_Neighbour method is fed as input into the Travelling Salesman Problem 
 # See the improvement! 
@@ -141,7 +141,8 @@ Run_Travelling_Salesman(sample(cities), run_time = 50, initial_temperature = 0, 
 Nearest_Neighbour <- function(){
   ord <- 1
   for(i in 1:cities){
-    next_node <- dist_mtx[ord[1], -ord] %>% which.min %>% names %>% as.numeric %>% as.integer
+    next_node <- as.numeric(names(which.min(dist_mtx[ord[1], -ord]))) # Note typically I would use piping here for readability. Eg, see the commented line below
+    #next_node <- dist_mtx[ord[1], -ord] %>% which.min %>% names %>% as.numeric          # However this line requires installing magrittr()
     ord <- c(next_node, ord)
   }
   ord <- c(ord, setdiff(1:cities, ord))
