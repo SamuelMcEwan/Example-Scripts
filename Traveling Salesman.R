@@ -33,7 +33,7 @@
 # After running a few microbenchmarks, the bottleneck is in computation of the total distance
 #################################################
 
-cities <- 750 
+cities <- 500 
 df <- data.frame(x = sample(1000, cities), y = sample(1000, cities))
 plot(df, type = 'b')
 
@@ -44,7 +44,7 @@ dist_mtx <- as.matrix(dist(df))
 distance <- function(order){
   total_distance <- 0
   for (i in 1:(length(order)-1)) {
-    total_distance <- total_distance + dist[order[i], order[i+1]]
+    total_distance <- total_distance + dist_mtx[order[i], order[i+1]]
   }
   return(total_distance)
 } 
@@ -97,7 +97,7 @@ Run_Travelling_Salesman <- function(starting_order, run_time, initial_temperatur
   display_plot <- rep(TRUE, length(plot_at_time))  
   par(mfrow = c(1,2))
   
-  while(currentTime < wait) {
+  while(currentTime < run_time) {
     opt2 <- swap(order = order, dist = E)
     newOrder <- opt2$ord
     newE <- opt2$dis
