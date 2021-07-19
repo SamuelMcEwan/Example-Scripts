@@ -52,6 +52,6 @@ while (time.perf_counter() - startTime < runTime):
             plt.savefig('Plot Subdirectory/Test{}.png'.format(1000*round(time_since,4)))
             display_plot[plot_times == round(time_since,1)] = False
     
-
+# Display the improvement in distance travelled after each iteration.  
 plt.plot([x for x in range(1, iter)], Error)
 plt.show()
