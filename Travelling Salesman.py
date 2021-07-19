@@ -22,12 +22,14 @@ def swap(order, dis):
     res = dict(zip(["ord", "newdis"],[ord, newdis]))
     return(res)
 
-
 fig = plt.gcf()
 order = random.sample(range(cities), cities)
 E = t_distance(order)
 iter = 1
 Error = []
+
+# Plotting/Animating every route improvement is computationally expensive, and drastically reduces performance. 
+# Some additional logic is added below such that the route plot will only be updated once every 0.5 seconds
 startTime = time.perf_counter()
 runTime = 30
 plotTime = 0.5
