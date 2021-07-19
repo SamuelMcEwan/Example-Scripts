@@ -53,22 +53,3 @@ while (time.perf_counter() - startTime < runTime):
 
 plt.plot([x for x in range(1, iter)], Error)
 plt.show()
-
-
-
-
-# plt.pause(0.1)
-
-
-
-
-def Nearest_Neighbour():
-    ord = 1
-    for x in range(cities):
-        next_node = 
-
-order = random.sample(range(5), 5)
-t_distance(order)
-
-np.argmin(dist_mtx[1,])
-np.argsort(dist_mtx[1,])
