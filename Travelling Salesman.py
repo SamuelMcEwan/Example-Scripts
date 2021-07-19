@@ -28,8 +28,8 @@ E = t_distance(order)
 iter = 1
 Error = []
 
-# Plotting/Animating every route improvement is computationally expensive, and drastically reduces performance. 
-# Some additional logic is added below such that the route plot will only be updated once every 0.5 seconds
+# Plotting/Animating EVERY route improvement is computationally expensive, and drastically reduces performance. 
+# Some additional logic is added below such that the route plot will be saved once every 0.5 seconds in a local directory
 startTime = time.perf_counter()
 runTime = 30
 plotTime = 0.5
