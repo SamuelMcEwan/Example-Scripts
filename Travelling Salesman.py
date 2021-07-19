@@ -4,7 +4,7 @@ from scipy.spatial import distance
 cities = 1000
 df = np.array([[random.randrange(1000) for x in range(2)] for x in range(cities)]) 
 order = random.sample(range(cities), cities)
-plt.plot(df[order,0], df[order,1], '-o') # - for line, and o for point. Simple!  o-g is the same as -og which is line, point, green 
+plt.plot(df[order,0], df[order,1], '-o') 
 plt.show()
 
 dist_mtx = distance.cdist(df, df, 'euclidean')
