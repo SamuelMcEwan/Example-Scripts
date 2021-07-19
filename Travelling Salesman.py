@@ -45,7 +45,7 @@ while (time.perf_counter() - startTime < runTime):
         time_since = time.perf_counter()-startTime
         if(sum(display_plot[plot_times == round(time_since,1)]) > 0):
             fig.clear()
-            plt.plot(df[order,0], df[order,1], '-o') # - for line, and o for point. Simple!  o-g is the same as -og which is line, point, green 
+            plt.plot(df[order,0], df[order,1], '-o')
             plt.title('TSP: Time = {}s, Distance = {}m'.format(round(time_since,1), round(E)) , fontsize=14, fontweight='bold')
             plt.savefig('Plot Subdirectory/Test{}.png'.format(1000*round(time_since,4)))
             display_plot[plot_times == round(time_since,1)] = False
