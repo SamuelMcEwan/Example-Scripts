@@ -53,6 +53,3 @@ Here I list and briefly describe the demonstrational value of each syntax file I
 
 *Note* This repository is designed as simple evidence that I am comfortable coding with R. Coincidentally this page also demonstrates my competency with Github. 
 More advanced scripts, such as novel coding challenges (eg - creating a 'Silicon Symphony' or 'Paint GUI' in R) may be added later, alongside technical analyses requiring LMMs. For now, this page is just a minor add-on to various job applications. Thank you for your consideration.  
-
-
-Alternatively various coding projects such as creating a 'Silicon Symphony' or 'Paint GUI' in R 
