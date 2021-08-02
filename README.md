@@ -1,6 +1,6 @@
 ### Hi there, I'm Sam 👋
 
-## I'm a Statistician with 1 year of industrial experience !!
+## I'm a Statistician with 1 year of industrial experience !
 
 - 🌱 I’m currently learning everything. C++, Python, SQL, Plink 🤣
 - 🥅 2021 Goals: Contribute to the Medical Sector using all the Statistical Tools at my disposal
@@ -52,4 +52,7 @@ Here I list and briefly describe the demonstrational value of each syntax file I
 - `Travelling_Salesman.py`: Same as above, but implemented in Python.
 
 *Note* This repository is designed as simple evidence that I am comfortable coding with R. Coincidentally this page also demonstrates my competency with Github. 
-More advanced scripts, requiring LMMs may be added later. Alternatively various coding projects such as creating a 'Silicon Symphony' or 'Paint GUI' in R 
+More advanced scripts, such as novel coding challenges (eg - creating a 'Silicon Symphony' or 'Paint GUI' in R) may be added later, alongside technical analyses requiring LMMs. For now, this page is just a minor add-on to various job applications. Thank you for your consideration.  
+
+
+Alternatively various coding projects such as creating a 'Silicon Symphony' or 'Paint GUI' in R 
