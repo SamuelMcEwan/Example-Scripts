@@ -46,7 +46,7 @@ This repository contains a subset of syntax files I generated throughout my work
 
 Here I list and briefly describe the demonstrational value of each syntax file I made publicly available:
 - `Example_Script_1.R`: Well documented code purposed for data processing and preliminary analysis
-- `Example_Script_2.R`: Well documented code purposed for analysis. Simplistic measures were used due to small data and the complicated nature of quantifying p.falciparum malaria biomarkers in longitudinal studies. 
+- `Example_Script_2.R`: Well documented code purposed for analysis. Simplistic measures were used due to small sample size and the complicated nature of quantifying p.falciparum malaria biomarkers in longitudinal studies. 
 - `The_Power_of_Rcpp.R`: Code optimization via seemless integration of R and C++.
 - `Travelling_Salesman.R`: My attempt to solve a well known NP-hard problem in computer science and operations research. The key idea is to microbenchmark performance and use efficient algorithms that avoid bottlenecking. Produces groovy animations/plots.
 - `Travelling_Salesman.py`: Same as above, but implemented in Python.
