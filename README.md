@@ -33,7 +33,7 @@
 
 ### Other Technical Skills:
 - Knowledge of core genetic principles (Central Dogma, Meiosis/Mitosis, Mendelian Inheritance)
-- Non-industrial experience using PLINK on a small scale GWAS of a goat population (~4000 individuals, 60 chromosomes) 
+- Modelling Complex Genetic Traits using GCTA, Plink, LDSC or newly developed R/c++ code 
 - Teaching/Consulting capability
 
 
