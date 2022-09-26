@@ -42,7 +42,7 @@
 
 ## Example Scripts
 
-This repository contains a subset of syntax files I generated throughout my work at QIMR B (2020) and personal time. Due to data confidentiality, no assosciated data is present for these scripts and only part of the code is shown. Keep in mind this section is intended for demonstrational purposes only. 
+This repository contains a subset of syntax files I generated throughout my work at QIMR B (2020) and personal time. It may be outdated. Due to data confidentiality, no assosciated data is present for these scripts and only part of the code is shown. Keep in mind this section is intended for demonstrational purposes only. 
 
 Here I list and briefly describe the demonstrational value of each syntax file I made publicly available:
 - `Example_Script_1.R`: Well documented code purposed for data processing and preliminary analysis
