@@ -34,6 +34,7 @@
 ### Other Technical Skills:
 - Knowledge of core genetic principles (Central Dogma, Meiosis/Mitosis, Mendelian Inheritance)
 - Modelling Complex Genetic Traits using GCTA, Plink, LDSC or newly developed R/c++ code 
+- Shiny App Development
 - Teaching/Consulting capability
 
 
