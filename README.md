@@ -2,7 +2,7 @@
 
 ## I'm a Statistical Geneticist in-training with 1 year of industrial experience !
 
-- 🌱 I’m currently learning everything. C++, Python, SQL, Plink 🤣
+- 🌱 I’m currently learning everything. C++, Python, SQL, HTML 🤣
 - 🥅 2021 Goals: Contribute to the Medical Sector using all the Statistical Tools at my disposal
 - ⚡ Fun fact: I love to play sport and guitar / piano. I recently landed a triple backflip on trampoline 🤸 
 
