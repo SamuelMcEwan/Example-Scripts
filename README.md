@@ -1,6 +1,6 @@
 ### Hi there, I'm Sam 👋
 
-## I'm a Statistical Geneticist in-training with 1 year of industrial experience !!
+## I'm a Statistical Geneticist in-training with 1 year of industrial experience !
 
 - 🌱 I’m currently learning everything. C++, Python, SQL, Plink 🤣
 - 🥅 2021 Goals: Contribute to the Medical Sector using all the Statistical Tools at my disposal
